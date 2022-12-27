@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+    {% block title %}
+    <title>FEES FORM</title>
+    {% endblock %}
+
+    {% block content %}
+    {% load crispy_forms_tags %}
+    <div class="container-fluid bg-secondary">
+		<h1 class="text-danger" align="center">FEES FORM</h1>
+	</div>
+
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{form|crispy}}
+            <input type="submit" value="ADD FEES" class="btn btn-success btn-lg">
+            <input type="submit" value="RESET" class="btn btn-danger btn-lg float-right">
+        </form>
+        <div class="text-center">
+            <button class="btn btn-warning"><a href="{% url 'studataurl' %}">SHOW STUDENT DETAILS</a></button>
+            <button class="btn btn-warning"><a href="{% url 'feesdataurl' %}">SHOW FEES DETAILS</a></button><br>
+        </div>
+    </div>
+    {% endblock %}

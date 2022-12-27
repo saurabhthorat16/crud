@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+    {% block title %}
+    <title>SHOW PRODUCT</title>
+    {% endblock %}
+
+    {% block content %}
+    <div class="container-fluid bg-secondary">
+		<h1 class="text-danger" align="center">PRODUCT DETAILS</h1>
+	</div>
+    <div class="container">
+      <table class="table">
+        <thead>
+              <!-- On rows -->
+        <th class="table-active">STUDENT ID</th>
+        <th class="table-primary">FIRST NAME</th>
+        <th class="table-secondary">LAST NAME</th>
+        <th class="table-success">ADDRESS</th>
+        <th class="table-danger">EMAIL</th>
+        <th class="table-primary">UPDATE</th>
+              <th class="bg-danger">DELETE</th>
+        </thead>
+<!-- On cells (`td` or `th`) -->
+        <tbody>
+        {% for i in data %}
+        <tr>
+            <td class="table-active">{{i.sid}}</td>
+            <td class="table-primary">{{i.fname}}</td>
+            <td class="table-secondary">{{i.lname}}</td>
+            <td class="table-success">{{i.addr}}</td>
+            <td class="table-danger">{{i.email}}</td>
+            <td class="bg-primary"><button class="btn btn-warning"><a href="{% url 'updatestuurl' i.sid %}">UPDATE</a></button></td>
+            <td class="bg-danger"><button class="btn btn-light"><a href="{% url 'deletestuurl' i.sid %}">DELETE</a></button></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+
+      </div>
+    {% endblock %}
